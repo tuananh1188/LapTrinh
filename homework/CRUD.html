@@ -1,0 +1,172 @@
+<head>
+    <title>CRUD</title>
+    <style>     
+        .container{
+            width: 800px;
+            height: auto;
+            background-color: bisque;
+            margin: auto;
+            position: relative;
+        }
+        .container> #sanpham{
+            padding: 30px;
+        }
+        .container> #sanpham> div{
+            display: grid;
+            grid-template-columns: 150px auto;
+            padding: 10px;
+        }
+        .container> #sanpham> div> .lb{
+            width: 150px;
+            font-weight: bold;
+        }
+        .container> #sanpham> div> span > .txt{
+            width: 100%;
+        }
+        .container> #table {
+            margin-top: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .container> #table tr:hover {background-color: #ddd;}
+
+        .container> #table td, #tb th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .container> #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 20px;
+            text-align: left;
+            background-color: rgb(206, 136, 86);
+            color: white;   
+        }
+        .container> #sanpham> #bt-them{
+            width: 120px;
+            border-radius: 10px;
+            padding: 10px;
+            background-color:rgb(206, 136, 86);
+            color: white;
+            position: absolute; top: 350px; right: 270px;
+            border: none;
+        }
+        .container> #sanpham> #bt-huy{
+            width: 120px;
+            border-radius: 10px;
+            padding: 10px;
+            background-color:rgb(206, 136, 86);
+            color: white;
+            position: absolute; top: 350px; right: 20px;
+            border: none;   
+        }
+        .container> #sanpham> #bt-capnhat{
+            width: 120px;
+            border-radius: 10px;
+            padding: 10px;
+            background-color:rgb(206, 136, 86);
+            color: white;
+            position: absolute; top: 350px; right: 145px;
+            border: none; 
+        }
+        .loi{  
+            font-style: italic;
+            color: red;
+            }
+        #sosp{
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body onload="taidulieubang();">
+    <div class="container">
+        <div id="sanpham">
+            <div>
+                <label class="lb" for="id-sp">ID</label>
+                <span>
+                    <input type="number" id="id-sp" class="txt">
+                    <em id="id-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb" for="ten-sp">Tên Sản Phẩm</label>
+                <span>
+                    <input type="text" id="ten-sp" class="txt">
+                    <em id="ten-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb" for="soluong-sp">Số Lượng</label>
+                <span>
+                    <input type="number" id="soluong-sp" class="txt">
+                    <em id="soluong-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb" for="gia-sp">Giá bán</label>
+                <span>
+                    <input type="number" id="gia-sp" class="txt">
+                    <em id="gia-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb" for="ngaysx-sp">Ngày Sản Xuất</label>
+                <span>
+                    <input type="date" id="ngaysx-sp" class="txt">
+                    <em id="ngaysx-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb">Màu Sắc</label>
+                <span>
+                    <input type="radio" id="mau-do" name="mau-sp" value="Đỏ">
+                    <label class="lb-sub" for="mau-do">Đỏ</label>
+                    <input type="radio" id="mau-xanh" name="mau-sp" value="Xanh">
+                    <label class="lb-sub" for="mau-xanh">Xanh</label>
+                    <input type="radio" id="mau-trang" name="mau-sp" value="Trắng">
+                    <label class="lb-sub" for="mau-trang">Trắng</label><br>
+                    <em id="mau-loi" class="loi"></em>
+                </span>
+            </div>
+
+            <div>
+                <label class="lb">Tính Năng</label>
+                    <span>
+                        <input type="checkbox" id="gps" name="tinhnang-sp" value="GPS">
+                        <label class="lb-sub" for="gps">GPS</label>
+                        <input type="checkbox" id="wifi" name="tinhnang-sp" value="WIFI">
+                        <label class="lb-sub" for="gps">WIFI</label>
+                        <input type="checkbox" id="jack" name="tinhnang-sp" value="JACK">
+                        <label class="lb-sub" for="jack">JACK</label><br>
+                        <em id="tinhnang-loi" class="loi"></em>
+                    </span>
+            </div>
+            <div title ="Số sản phẩm đã chọn" id="sosp">Số Sản Phẩm : 0</div>
+            <button id="bt-them" onclick="kiemtra()">Thêm Sản Phẩm</button>
+            <button id="bt-huy" onclick="huydulieu()">Huỷ Sản Phẩm</button>
+            <button id="bt-capnhat" onclick="capnhat()">Cập Nhật</button>
+        </div>
+        <table id="table">
+            <tr>
+                <th>ID</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Giá Bán</th>
+                <th>Ngày Sản Xuất</th>
+                <th>Màu Sắc</th>
+                <th>Tính Năng</th>
+                <th>Thay Đổi</th>
+            </tr>
+        </table>
+    </div>
+    <script src="CRUD.js"></script>
+</body>

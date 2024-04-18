@@ -1,0 +1,170 @@
+    <head>
+        <title>Nhập Sản Phẩm</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            #nhapSanPham{
+                width: 500px;
+                height: 400px;
+                margin: auto;
+                background-color: antiquewhite;
+                padding: 10px;
+                position: relative;
+            }
+
+            div{
+                display: grid;
+                grid-template-columns: 150px auto;
+                margin: 10px;
+                padding: 5px;
+            }
+
+            .nhan{
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+
+            .txt{
+                width: 300px;
+            }
+
+            .lb{
+                font-size: 1em;
+            }
+
+            .loi{
+                font-size: 0.8em;
+                font-style: italic;
+                color: red;
+            }
+
+            #bang{
+                text-align: center;
+                width: 700px;
+                background-color: bisque;
+                margin: auto;  
+                padding: 5px;
+                border: 1px solid black;
+                box-sizing: border-box ;
+                border-radius: 10px;
+            }
+            #bang tr:hover {background-color: #ddd;}
+
+            #bang >th , #bang >td {
+                font-size: 2em;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            p{
+                text-align: center;
+                padding-top: 10px;
+                padding-left: 60px;
+            }
+            
+            #bt1{
+                width: 120px;
+                border-radius: 10px;
+                background-color: rgb(167, 131, 74);
+                color:aliceblue;
+                position: absolute; bottom: 20px; right: 175px;
+                padding: 5px ;
+            }
+            #bt2{
+                width: 120px;
+                border-radius: 10px;
+                background-color: rgb(167, 131, 74);
+                color:aliceblue;
+                position: absolute; bottom: 20px; right: 50px;
+                padding: 5px ;
+            }
+            #bt3{
+                width: 120px;
+                border-radius: 10px;
+                background-color: rgb(167, 131, 74);
+                position: absolute; bottom: 20px; ;right: 5px; 
+                color: aliceblue;
+                padding: 5px;
+            }
+        
+        </style>
+    </head>
+
+    <body onload="taidulieu()">
+        <header>
+            <table id="bang">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Số Lượng</th>
+                    <th>Giá</th>
+                    <th>Ngày Sản Xuất</th>
+                    <th>Màu Sắc</th>
+                    <th>Tính Năng</th>
+                    <th>Thay Đổi</th>
+                </tr>
+            </table>
+        </header>
+        <br>
+        <main>
+            <form id="nhapSanPham" onsubmit="return kiemtradulieu(event)">
+                <div>
+                    <label class="nhan" for="tensanpham">Tên Sản Phẩm</label>
+                    <span><input type="text" id="tensanpham" class="txt"/><br>
+                          <b id="baoloiten" class="loi"></b>
+                    </span>
+                </div>
+                <div>
+                    <label class="nhan" for="soluong">Số Lượng</label>
+                    <span><input type="number" id="soluong" class="txt"/><br>
+                          <b id="baoloisl" class="loi"></b>
+                    </span>
+                </div>
+                <div>
+                    <label class="nhan" for="giasanpham">Giá Sản Phẩm</label>
+                    <span>
+                        <input type="text" id="giasanpham" class="txt"/><br>
+                        <b id="baoloigia" class="loi"></b>
+                    </span>
+                </div>
+                <div>
+                    <label class="nhan" for="ngaysanxuat">Ngày Sản Xuất</label>
+                    <span>
+                        <input type="date" id="ngaysanxuat" class="txt"/><br>
+                        <b id="baoloingay" class="loi"></b>
+                    </span>
+                </div>
+                <div>
+                    <label class="nhan">Màu Sắc</label>
+                    <span>
+                        <input type="radio" id="do" name="mausac" value="Đỏ"/>
+                        <label class="lb" for="do">Đỏ</label>
+                        <input type="radio" id="xanh" name="mausac" value="Xanh"/>
+                        <label class="lb" for="xanh">Xanh</label>
+                        <input type="radio" id="trang" name="mausac" value="Trắng"/>
+                        <label class="lb" for="trang">Trắng</label>
+                        <br>
+                        <b id="baoloimau" class="loi"></b>
+                    </span>
+                </div>
+                <div>
+                    <label class="nhan">Tính Năng</label>
+                    <span>
+                        <input type="checkbox" id="gps" name="tinhnang" value="GPS"/>
+                        <label for="gps">GPS</label>
+                        <input type="checkbox" id="wifi6" name="tinhnang" value="WIFI6"/>
+                        <label for="wifi6">WIFI6</label>
+                        <input type="checkbox" id="jack3.5" name="tinhnang" value="JACK3.5"/>
+                        <label for="jack3.5">JACK3.5</label>
+                        <br>
+                        <b id="baoloitn" class="loi"></b>
+                  </span>
+                </div>
+                <p>
+                    <button id="bt1" type="submit">Thêm Sản Phẩm</button>
+                    <button id="bt2" onclick="huydulieu()">Huỷ</button>
+                </p>
+            </form>
+
+            <script src="form_test.js"></script>
+        </main>
+    </body>

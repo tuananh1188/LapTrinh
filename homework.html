@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The List of Employee</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+             h1{
+                color: green;
+                text-align: left;
+                font-size: 40px;
+                font-family: arbutus;
+                }  
+          .name{ 
+                 text-align: left;
+                 color: green;
+                 font-size: 20px;
+                }
+           #bt{
+                padding: 10px;
+                margin: -10px 240px;
+                background-color: pink;
+                border-radius: 6px;
+                border: 1px solid black;
+                text-align: center;
+                 }
+        </style>
+    </head>
+
+    <body>
+        <h1>Form Data</h1>
+            <ul class="name">
+              <li>FullName &nbsp; <input type="text" id="fullname"/></li>
+              <li>BirthDay &nbsp;&nbsp; <input type="text" id="birthday" /></li> 
+              <li>Address &nbsp;&nbsp; <input type="text" id="address" /></li>
+            </ul>
+              <button type="button" id="bt" onclick="getValue()">Submit</button>
+            
+        <h3 id="data" style="color:pink"></h3>
+
+    <script>
+         function getValue(){ 
+            var arr = new Array();          
+              arr[0] = document.getElementById("fullname").value;
+              arr[1] = document.getElementById("birthday").value;
+              arr[2] = document.getElementById("address").value;
+            for(i=0;i<arr.length;i++){
+             if(arr[i]=="" ){alert("fill in missing information");
+              } else{
+                document.getElementById("data").innerHTML= (arr[0] + "<br>" + arr[1] + "<br>" + arr[2]);        
+                } 
+            }
+}
+    </script>
+  </body>
+</html>
+      
+         
+        

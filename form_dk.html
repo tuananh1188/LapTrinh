@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Đăng Ký Tài Khoản</title>
+        <style>
+                h1{
+                font-style: italic;
+                text-align: center;
+                }
+                #frm {
+                     width: 500px;
+                     background-color: rgb(192, 173, 173);
+                     margin: auto;
+                     padding: 30px;
+                     border: 5px solid color darkcyan;
+                     font-size: 15px;
+                     text-align: left;
+                     border-radius: 10px;
+                }
+                #frm div {
+                    display: grid;
+                    grid-template-columns: 150px auto;
+                }
+                .lb {
+                    padding: 10px;
+                    text-align: left;
+                }
+                #bt1 {
+                    text-shadow:white;
+                    width: 400px;
+                    padding: 10px;
+                    background-color: rgb(199, 125, 50);
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    margin: 50px 50px 0px 50px;
+                }
+                #bt2 {
+                    text-shadow:white;
+                    width: 400px;
+                    padding: 10px;
+                    background-color: rgb(196, 51, 15);
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    margin: 20px 50px 0px 50px;
+                }
+                input[type=text], input[type=password] {
+                    width: 320px;
+                    height: 10px;
+                    padding: 12px;
+                    margin: 0px 0 22px 0;
+                    display: inline-block;
+                    border: none;
+                    background: #f1f1f1;
+                    font-style: italic;
+                    border-radius: 10px;
+                }
+                input[type=text]:focus, input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+                .error {
+                    color: red;
+                    margin: 5px;
+                    font-style: italic;
+                    font-size: 0.8em;
+                }
+                .er {
+                    background-color: yellow;
+                    border-color: red;
+                }
+                .tr {
+                    background-color: white;
+                    border-color: black;
+                }
+                #captchaBackground {
+                    height: 80px;
+                    width: 300px;
+                    margin: 0px 175px;
+                    background-color: rgb(199, 125, 50);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+                #captcha {
+                    height: 100%;
+                    width: 100%;
+                    font-size: 50px;
+                    letter-spacing: 3px;
+                    padding: 5px 100px;
+                    margin: auto;
+                    display: block;
+                }
+                #refreshButton {
+                    margin-left: 360px;
+                    background-color: #08e5ff;
+                    border: 0px;
+                    font-weight: bold;
+                    border-radius: 10px;
+                }
+                #textBox {
+                    height: 15px;
+                    width: 120px;
+                    padding: 10px 5px;
+                    margin: 0px 130px;
+                }
+                .incorrectCaptcha {
+                    color: #FF0000;
+                }
+                .correctCaptcha {
+                    color: #7FFF00;
+                }
+                #tb {
+                    margin: auto;
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 50%;
+                    font-size: 16px;
+                
+                }
+                #tb tr:nth-child(even){background-color: #f2f2f2;}
+
+                #tb tr:hover {background-color: #ddd;}
+
+                #tb td, #tb th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: center;
+                }
+                #tb th {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: center;
+                    background-color: rgb(192, 173, 173);
+                    color: white;   
+                }
+               
+        </style>
+    </head>
+
+    <body>
+        <h1>ĐĂNG KÝ</h1>
+        <form id="frm" name="dangkytk" onsubmit="kiemtra()">
+            <div>
+                <label class="lb" for="tentk">Tên Đăng Nhập</label>
+                <span><input type="text" onkeyup="hotcheck_tentk()" id="tentk" name="tentaikhoan" value=""/><em class="error"></em></span>
+            </div>
+            <div>
+                <label class="lb" for="mk">Mật Khẩu</label>
+                <span><input type="password" onkeyup="hotcheck_mk()" id="mk" name="matkhau" value=""/><em class="error"></em></span>
+            </div>
+            <div>
+                <label class="lb" for="xn_mk">Xác Nhận Mật Khẩu</label>
+                <span><input type="password" onkeyup="hotcheck_xnmk()" id="xn_mk" name="xn_matkhau" value=""/><em class="error"></em></span>
+            </div>
+            <div id="captchaBackground">
+                    <canvas id="captcha">captcha text</canvas>
+                    <input id="textBox" type="text" name="text">
+                    <span><button id="refreshButton" type="submit">Refresh</button></span>
+                <span id="output"></span>
+            </div>
+            <div><button id="bt1" type="submit">ĐỒNG Ý</button></div>
+            <div><button id="bt2" onclick="">HƯỚNG DẪN ĐĂNG KÝ</button></div>
+
+        </form>
+        <br>
+        <hr>
+        <table id="tb">
+            <tr>
+                <th>Tên Đăng Nhập</th>
+                <th>Mật Khẩu</th>
+                <th>Xác Nhận Mật Khẩu</th>
+            </tr>
+            <tr>
+                <td id="kqtentk"></td>
+                <td id="kqmk"></td>
+                <td id="kq_xnmk"></td>
+            </tr>
+        </table>
+        <script src="form_dk.js"></script>
+    </body>
+</html>

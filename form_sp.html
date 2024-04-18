@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Form Nhập Sản Phẩm</title>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                }
+                header {
+                   width: 80%;
+                   margin: 50px auto;
+                }
+                h1{
+                    text-align: center;
+                    font-style: italic;
+                }
+                #frm {
+                     width: 500px;
+                     background-color: rgb(231, 136, 136);
+                     margin: auto;
+                     padding: 20px;
+                     border: 5px solid color darkcyan;
+                     font-size: 22px;
+                     text-align: left;
+                     border-radius: 10px;
+                }
+                #frm div {
+                    display: grid;
+                    grid-template-columns: 150px auto;
+                    padding: auto;
+                    margin: 10px;
+                }
+                #frm .txt {
+                    width: 320px;
+                    padding: 4px;
+                }
+                #frm button {
+                    width: 150px;
+                    padding: 10px;
+                    background-color: rgb(241, 239, 237);
+                    border-radius: 10px;
+                    font-size: 16px;
+                    margin-left: 160px;
+                }
+                #tb {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 1000px;
+                    margin: auto;
+                    font-size: 16px;
+                }
+                #tb tr:nth-child(even){background-color: #f2f2f2;}
+
+                #tb tr:hover {background-color: #ddd;}
+
+                #tb td, #tb th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+                #tb th {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: left;
+                    background-color: rgb(231, 136, 136);
+                    color: white;   
+                }
+                .error {
+                    color: yellow;
+                    margin: 5px;
+                    font-style: italic;
+                    font-size: 0.8em;
+                }
+            
+            </style>
+        </head>
+        <body onload="loadData()">
+            <header>
+                <table id="tb">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Giá</th>
+                        <th>Giá Khuyến Mại</th>
+                    </tr>
+                </table>
+                <br>
+            </header>
+            <h1 id="mytext">SẢN PHẨM</h1>
+            <form id="frm" method="post" name="NhapSanPham">
+                <div>
+                   <label for="tenSp">Tên Sản Phẩm</label>
+                   <span><input type="text" id="tenSp" name="TenSanPham" class="txt"/><em class="error" id="checkTenSp"></em></span>
+                </div>
+
+                <div>
+                   <label for="giaSp">Giá</label>
+                   <span><input type="text" id="giaSp" name="GiaSanPham" class="txt"/><em class="error" id="checkGiaSp"></em></span>
+                </div>
+
+                <div>
+                   <label for="giaKm">Giá KM</label>
+                   <span><input type="text" id="giaKm" name="GiaKhuyenMai" class="txt"/><em class="error" id="checkGiaKm"></em></span> 
+                </div>
+
+                <div>
+                    <button type="button" id="btnThem" onclick="kiemtra()">Thêm Sản Phẩm</button>
+                    <button type="button" id="btnHuy" onclick="huy()">Huỷ</button>
+                </div>
+            </form>
+
+            <script src="form_sp.js"></script>
+        </body>
+    </html>

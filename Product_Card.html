@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Card</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .card{
+                background-color: white;
+                width: 260px; height: 365px;
+                margin: 50px auto;
+                position: relative;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            .card> .card__heart{
+               position: absolute; top: 10px; left:10px;
+               font-size: 20px;
+               font-weight: 900;
+            }
+            .card> .card__cart{
+                position: absolute; top: 10px; right:10px;
+                font-size: 20px;
+                font-weight: 900;
+
+            }
+            .card> div> #img__Product{
+                width: 200px;
+                position: absolute; top:50px ; left: 30px;
+                transition: 0.5s;
+            }
+            .card> div> #img__Product img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .card> .name__Product{
+                position: absolute; top: 180px; left: 52px;
+                font-size: 20px;
+                font-weight: 900;
+                transition: 0.5s;
+            }
+            .card> .price__Product{
+                position: absolute; top: 210px; left: 115px;
+                font-size: 20px;
+                font-weight: 900;
+                transition: 0.5s;
+            }
+            .card> .size__Product{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute; top: 420px; left: 15px;
+                gap: 5px;
+                font-size: 15px;
+                font-weight: bold; 
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.5s;
+            }
+            .card> .color__Product{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute; top: 390px; left: 15px;
+                gap: 10px;
+                font-size: 15px;
+                font-weight: bold;
+                visibility: hidden;
+                opacity: 0;  
+                transition: 0.5s;
+            }
+            .card> .size__Product> span{
+                font-size: 15px;
+                background-color: chocolate;
+                padding: 1px 6px;
+                border-radius: 5px;
+            }
+            .card> .color__Product> span{
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+            .color__red{
+                background-color: red;
+            }
+            .color__green{
+                background-color: green;
+            }
+            .color__black{
+                background-color: black;
+            }
+            .card> .card__action{
+                position: absolute; bottom: -118px;
+                text-align: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.5s;
+            }
+            #btn__buy, #btn__add{
+                background-color: chocolate;
+                padding: 8px;
+                border: none;
+                border-radius: 5px;
+                font-size: 11px;
+                font-weight: bold; 
+            }
+            #btn__add{
+                margin-left:5px ;
+            }
+            #btn__buy{
+                margin-left: 15px ;
+            }
+            .card:hover #img__Product{
+                transform: translateY(-50px) rotate(20deg);
+            }
+            .card:hover .name__Product, .card:hover .price__Product{
+                transform: translate(-40px ,-30px);
+            }
+            .card:hover .price__Product{
+                transform: translate(-100px,-30px) ;
+            }
+            .card:hover .size__Product, .card:hover .color__Product, .card:hover .card__action{
+                visibility: visible;
+                opacity: 100;
+                transform: translateY(-150px);
+            }
+            
+        </style>
+    </head>
+    <body bgcolor="black">
+        <div class="card">
+            <div class="card__heart"><i class='bx bx-heart'></i></div>
+            <div class="card__cart"><i class='bx bx-cart-alt' ></i></div>
+            <div><img id="img__Product" src="/ảnh product card/adidas-black-Ultraboost-Web-Dna-Sneakers.png.webp"></div>
+            <div class="name__Product">Adidas Ultraboost</div>
+            <div class="price__Product">$99</div>
+            <div class="size__Product">
+                    <h3>Size:</h3>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+            </div>
+            <div class="color__Product">
+                    <h3>Color:</h3>
+                    <span class="color__red"></span>
+                    <span class="color__green"></span>
+                    <span class="color__black"></span>
+            </div>     
+            <div class="card__action">
+                <span><button id="btn__buy">Buy Now</button></span>
+                <span><button id="btn__add">Add Cart</button></span>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

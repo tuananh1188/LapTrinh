@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Form Nhập Sản Phẩm</title>
+            <style>
+                h1{
+                    text-align: center;
+                    font-style: italic;
+                }
+                #frm {
+                     width: 800px;
+                     background-color: rgb(231, 136, 136);
+                     margin: auto;
+                     padding: 30px;
+                     border: 5px solid color darkcyan;
+                     font-size: 22px;
+                     text-align: left;
+                     border-radius: 10px;
+                }
+                #frm p {
+                    display: grid;
+                    grid-template-columns: 150px auto;
+                }
+                #frm .txt {
+                    width: 640px;
+                    padding: 4px;
+                }
+                #frm button {
+                    width: 150px;
+                    padding: 10px;
+                    background-color: rgb(241, 239, 237);
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 16px;
+                    margin: 20px 300px 0px 300px;
+                }
+                #tb {
+                 font-family: Arial, Helvetica, sans-serif;
+                 border-collapse: collapse;
+                 width: 100%;
+                 font-size: 16px;
+            }
+            #tb tr:nth-child(even){background-color: #f2f2f2;}
+
+            #tb tr:hover {background-color: #ddd;}
+
+            #tb td, #tb th {
+                 border: 1px solid #ddd;
+                 padding: 8px;
+            }
+            #tb th {
+                 padding-top: 12px;
+                 padding-bottom: 12px;
+                 text-align: left;
+                 background-color: rgb(231, 136, 136);
+                 color: white;   
+            }
+            .error {
+                color: yellow;
+                margin: 5px;
+                font-style: italic;
+                font-size: 0.8em;
+            }
+            .er {
+                background-color: yellow;
+                border-color: red;
+            }
+            .tr {
+                background-color: white;
+                border-color: black;
+            }
+            #imgSP {
+                width: 100px;
+                height: 120px;
+                display: none;
+            }
+            </style>
+        </head>
+        <body>
+            <h1 onclick="show()" id="mytext">SẢN PHẨM</h1>
+            <form id="frm" name="NhapSanPham" onsubmit="return kiemtra(event)">
+                <p><label for="tenSp">Tên Sản Phẩm</label>
+                   <span><input onkeyup="hotchecktensp()" type="text" id="tenSp" name="TenSanPham" class="txt"/><em class="error"></em></span>
+                </p>
+                <p><label for="giaSp">Giá</label>
+                   <span><input onkeyup="hotcheckgiasp()" type="text" id="giaSp" name="GiaSanPham" class="txt"/><em class="error"></em></span>
+                </p>
+                <p><label for="GiaKm">Giá KM</label>
+                   <span><input type="text" id="giaKm" name="GiaKhuyenMai" class="txt"/></span>
+                </p>
+                <p><label for="NhaSx">Nhà Sản Xuất</label>
+                   <span>
+                         <select id="NhaSx" name="NhaSanXuat">
+                         <option value="ChonNSX" selected>Chọn Nhà Sản Xuất</option>
+                         <option value="Apple">Apple</option>
+                         <option value="Samsung">Samsung</option>
+                         <option value="Xiaomi">Xiaomi</option>
+                         </select>
+                   </span>
+                </p>
+                <p><label for="hinhSp">Hình Sản Phẩm</label>
+                   <span><input type="file" id="hinhSp" onchange="hienhinh()" name="HinhSP" class="txt"/>
+                         <img id="imgSP"/>
+                  </span>
+                </p>
+                <p><label>Màu Sắc</label>
+                   <span>
+                         <input type="radio" id="do" name="MauSac" value="Đỏ"/>
+                         <label for="do">Đỏ</label>
+                         <input type="radio" id="xanh" name="MauSac" value="Xanh"/>
+                         <label for="xanh">Xanh</label>
+                         <input type="radio" id="trang" name="MauSac" value="Trắng"/>
+                         <label for="trang">Trắng</label>
+                   </span>
+                </p>
+                <p><label>Tính Năng</label>
+                   <span>
+                         <input type="checkbox" id="gps" name="TinhNang" value="GPS"/>
+                         <label for="gps">GPS</label>
+                         <input type="checkbox" id="wifi6" name="TinhNang" value="WIFI6"/>
+                         <label for="wifi6">WIFI6</label>
+                         <input type="checkbox" id="jack3.5" name="TinhNang" value="JACK3.5"/>
+                         <label for="jack3.5">JACK3.5</label>
+                   </span>
+                </p>
+                <div id="baoloi" class="error"></div>
+                <p><button type="submit">Thêm Sản Phẩm</button></p>
+
+                <table id="tb">
+                    <tr>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Giá</th>
+                        <th>Giá Khuyến Mại</th>
+                        <th>Nhà Sản Xuất</th>
+                        <th>Hình Sản Phẩm</th>
+                        <th>Màu Sắc</th>
+                        <th>Tính Năng</th>
+                    </tr>
+                    <tr>
+                        <td id="kqten"></td>
+                        <td id="kqgia"></td>
+                        <td id="kqgiakm"></td>
+                        <td id="kqnhasx"></td>
+                        <td id="kqhinhsp"></td>
+                        <td id="kqmausac"></td>
+                        <td id="kqtinhnang"></td>
+                    </tr>
+                </table>
+            </form>
+
+            <script>
+       
+
+//Ẩn hiện form khi click
+function show(){
+    if(document.getElementById("frm").style.display === "none"){
+        document.getElementById("frm").style.display = "block";
+        document.getElementById("mytext").innerHTML = "Ẩn Form Sản Phẩm";
+    }else{
+        document.getElementById("frm").style.display = "none";
+        document.getElementById("mytext").innerHTML = "Hiện Form Sản Phẩm";
+    }
+}
+//kiểm tra nóng báo lỗi luôn
+function hotchecktensp(){ 
+    var tensp = document.getElementById("tenSp").value;
+    if(tensp.length<6 || tensp.length>20){
+        document.getElementById("tenSp").nextElementSibling.innerHTML = "Tên sản phẩm phải từ 6 đến 20 ký tự";
+    }else{
+        document.getElementById("tenSp").nextElementSibling.innerHTML = "";
+    }
+}
+// kiểm tra nóng báo lỗi giá sản phẩm nhập sai
+function hotcheckgiasp(){
+    var giasp = document.getElementById("giaSp").value;
+    if(isNaN(giasp) == true){
+        document.getElementById("giaSp").nextElementSibling.innerHTML = "Giá sản phẩm phải là số";
+    } else if(giasp <= 0){
+        document.getElementById("giaSp").nextElementSibling.innerHTML = "Giá sản phẩm phải lớn hơn 0";
+    } else {
+        document.getElementById("giaSp").nextElementSibling.innerHTML ="";
+    }
+
+}
+// hàm hiện hình ảnh dùng onchange
+function hienhinh(){ 
+    var f = document.getElementById("hinhSp").files[0];
+    if (f == null) return;
+    console.log(f);
+    var url = URL.createObjectURL(f);
+    document.getElementById("imgSP").src = url;
+    document.getElementById("imgSP").style.display = "block";
+}
+function kiemtra(event){
+    event.preventDefault();
+var dulieu = true;
+var str="";
+//Kiểm tra tên sản phẩm từ 6 đến 20 ký tự 
+var tensp = document.getElementById("tenSp").value;
+if(tensp.length < 6 || tensp.length > 20){
+    dulieu = false;
+    document.getElementById("tenSp").focus();
+    str += "Tên sản phẩm phải từ 6 đến 20 ký tự <br>";
+} else{
+    document.getElementById("kqten").innerHTML = tensp;
+}
+//Kiểm tra giá phải là số dương
+var giasp = document.getElementById("giaSp").value;
+if(isNaN(giasp) == true){
+    dulieu = false;
+    str += "Giá phải là số <br>";
+}else if(giasp <= 0){
+    dulieu = false;
+    str += "Giá phải là số dương <br>";
+}else{
+    document.getElementById("kqgia").innerHTML = giasp;
+}
+//Kiểm tra giá khuyến mại phải là số dương và nhỏ hơn giá
+var giakm = document.getElementById("giaKm").value;
+if(isNaN(giakm) == true){
+    dulieu = false;
+    str += "Giá khuyến mại phải là số <br>";
+}else if(giakm <=0){
+    dulieu = false;
+    str += "Giá khuyến mại phải là số dương <br>";
+}else if(giakm > giasp){
+    dulieu = false;
+    str += "Giá khuyến mại phải nhỏ hơn giá sản phẩm <br>";
+}else{
+    document.getElementById("kqgiakm").innerHTML = giakm;
+}
+//Nhà sản xuất phải có chọn
+var nhasx = document.getElementById("NhaSx").value; 
+if(nhasx == "ChonNSX"){
+ dulieu = false;
+ str += "Nhà sản xuất chưa chọn <br>";
+}else{
+    document.getElementById("kqnhasx").innerHTML = nhasx;
+}
+//Hình sản phẩm phải chọn
+var hinhsp = document.getElementById("hinhSp").value;
+if(hinhsp ==""){
+    dulieu = false;
+    str += "Hình sản phẩm chưa chọn <br>";
+}else if(hinhsp.endsWith(".jpg") == false && hinhsp.endsWith(".png") == false){
+    dulieu = false;
+    str += "Hình sàn phẩm phải có đuôi .jpg hoặc .png <br>";
+}else {
+    document.getElementById("kqhinhsp").innerHTML = hinhsp;
+}
+//Màu sắc phải có chọn
+var arr_mausac = document.getElementsByName("MauSac"); //[input, input, input]
+var cochon = false;
+for(var i = 0; i < arr_mausac.length; i++){
+    if(arr_mausac[i].checked == true){
+        cochon = true;
+        document.getElementById("kqmausac").innerHTML = arr_mausac[i].value;
+    }
+}
+    if(cochon == false){
+        dulieu = false;
+        str += "Màu sắc chưa chọn <br>";
+    }
+//Tính năng phải có chọn
+var arr_tinhnang = document.getElementsByName("TinhNang");//[input, input, input]
+cochon = false;
+for(var i = 0; i < arr_tinhnang.length; i++){
+    if(arr_tinhnang[i].checked == true){
+        cochon = true;
+        document.getElementById("kqtinhnang").innerHTML += `${arr_tinhnang[i].value} <br>`;
+    }
+}
+    if(cochon == false){
+        dulieu = false;
+        str += "Tính Năng chưa chọn <br>";
+    }
+document.getElementById("baoloi").innerHTML = str;
+setTimeout('document.getElementById("baoloi").innerHTML = ""',5000);
+return dulieu;
+}
+
+let un = sessionStorage.getItem("username");
+let slx = localStorage.getItem("solanxem");
+
+</script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Coffee House</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            .container{
+                width: 1200px;
+                margin: auto;
+            }
+            .container > header{
+                max-width: 100%; height: auto;
+                height: 160px;
+                position: relative;
+                animation-name: header;
+                animation-duration: 5s;
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            .container > header > #logo{
+                width: 110px;
+                position: absolute; bottom: 30px; left: 50px;
+                animation-name: logo;
+                animation-duration: 3s;
+                animation-delay: 1s;
+                animation-iteration-count: 2;
+                animation-timing-function: linear;
+            }
+            .container > header > #logo2{
+                position: absolute; top: -30px; left: 420px;
+                width: 350px;
+            }
+            .container > header > #user{
+                position: absolute; top: 20px; right: 30px;
+            }
+            .container > header > #user > a{
+                font-size: 1em;
+                text-decoration: none;
+                font-style: italic;
+                color: grey;
+            }
+            .container > header > #user > a:hover{
+                font-weight: bold;
+                color: rgb(228, 159, 67);
+            }
+            .container > nav{
+                max-width: 100%; height: auto;
+                height: 60px;
+                position: relative;
+            }
+            .container > nav > ul{ 
+                list-style: none;
+                font-weight: bold;
+                display: flex; gap: 30px;
+                justify-content: center;
+                align-items: center ;
+                height: 100%;
+            }
+            .container > nav > ul > li > .main-menu{
+                background-color: rgb(255, 255, 254);
+                opacity: 0.9;
+                list-style: none;
+                line-height: 300%;
+                max-width: 100%; height: auto;
+                width: 200px; height: 500px;
+                position: absolute; top: 50px; left: 0px;
+                display: none;
+            }
+            .container > nav > ul > li:hover > .main-menu{
+                display: block;
+            }
+            .container > nav > ul > li > .main-menu > li >a{
+                text-decoration: none;
+                font-size: 1.2em;
+                padding-left: 20px;
+                color: rgb(101, 100, 100);
+            }
+            .container > nav > ul > li > .main-menu > li >a:hover{
+                color: chocolate;
+                text-decoration: underline;
+            }
+            .container > nav > ul > li > a{
+                position: relative;
+                color: black; 
+                text-decoration: none;
+                font-size: 1.2em;
+            }
+            .container > nav > ul > .has-childm::after{
+                font-size: 1.2em;
+                font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0c9";
+                color: chocolate;
+                position: absolute; bottom: 10px; left: 100px;
+                display: none;
+            }
+        
+            .container > nav > ul > li > a:hover{
+                text-decoration: underline;
+                color: chocolate;
+            }
+            .container > nav > ul > li > .sub-menu{   
+                display:none;
+            }
+            .container > nav > ul > li:hover > .sub-menu{
+                display: flex;
+                justify-content: center; gap: 80px; 
+                list-style: none;
+                position: absolute;
+                background-color: rgb(255, 255, 254);
+                opacity: 0.9;
+                width: 1200px; height: 250px; right: 0;
+                padding: 10px 0;
+                display: flexbox;
+                animation-name: menu_sp;
+                animation-duration: 1s;
+                animation-delay: 1s;
+                animation-fill-mode: forwards;
+            }
+            .container > nav > ul > li > .sub-menu > li{
+                padding: 6px 0;
+                margin-top: 10px;
+            }
+            .container > nav > ul > li > .sub-menu > li:last-child{
+                border: none;
+            }
+            .container > nav > ul > li > .sub-menu > li > a{
+                font-size: 1.2em;
+                text-decoration: underline;
+                font-style: italic;
+                font-weight: bold;
+                color: black;
+                padding: 8px 15px;
+            }
+            .container > nav > ul > li > .sub-menu > li > a:hover{
+                font-weight: bold;
+                color: chocolate;
+            }
+            .container > nav > ul > li > .sub-menu > li > .sub-menu{
+                position: absolute; 
+                list-style: none;
+                padding: 10px 0;
+            }
+            .container > nav > ul > li > .sub-menu > li > .sub-menu > li{
+                padding: 6px 15px;
+
+            }
+            .container > nav > ul > li > .sub-menu > li > .sub-menu > li > a{
+                text-decoration: none;
+                color: rgb(101, 100, 100);
+            }
+            .container > nav > ul > li > .sub-menu > li > .sub-menu > li > a:hover{
+                color: chocolate;
+                font-style: italic;
+                font-size: 1.1em;
+            }
+            .container > nav > ul > .has-child::after{
+                font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f107";
+                color: chocolate;
+                position: absolute; top: 22px; right: 575px;
+
+            }
+            .container > main > #banner > #anhbanner{
+                max-width: 100%; height: auto;
+                width: 1200px;
+                height: 550px;
+            }
+            .container > footer{
+                background-color: chocolate;
+                text-align: center;
+                color: white;
+                font-size: 1.5em;
+                padding: 20px;
+                line-height: 150%;
+                margin-top: 20px;
+            }
+            section > #listsp > h2{
+                text-align: center;
+                margin-top: 30px;
+            }
+            section > #listsp > #data{
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                grid-template-rows: 350px;
+                gap: 20px;
+            }
+            section > #listsp > #data > .sp{   
+                text-align: center;
+                padding-top: 20px;
+            }
+            #baiviet > #listsp > #data{
+                display: grid;
+                grid-template-columns: 386px 386px 386px ;
+                grid-template-rows: 410px;
+                gap: 20px;
+            }
+            section > #listsp > #data > .sp > a > .anh{
+                max-width: 100%; height: auto;
+                width: 250px;
+                border-radius: 10px;
+                box-shadow: 5px 5px 10px rgba(123, 120, 120, 0.6);
+            }
+            section > #listsp > #data > .sp > .tensp{
+                text-decoration: none;
+                font-size: 1.1em;
+                color: black;
+            }
+            section > #listsp > #data > .sp > .tensp:hover{
+                font-size: 1.2em;
+                color: rgb(167, 90, 73);
+            }
+            section > #listsp > #data > .sp > .gia{
+                padding-top: 5px;
+            }
+            #baiviet > #listsp > #data > .sp > a > .anh{
+                max-width: 100%; height: auto;
+                width: 360px;
+                height: 220px;
+                border-radius: 10px;
+            }
+            #baiviet > #listsp > #data > .sp > .noidung{
+                text-align: left;
+                padding: 10px;
+            }
+            #baiviet > #listsp > #data > .sp > .noidung > a{
+                text-decoration: none;
+                color: black;
+            }
+            #baiviet > #listsp > #data > .sp > .noidung > a:hover{
+                color:rgb(228, 159, 67);
+                font-weight: bolder;
+            }
+            .container > header > #hotline{
+                position: absolute; bottom: 10px; right: 30px;
+                font-size: 1em;
+                color: grey;
+                font-style: italic;
+                align-items: center;
+                height: 22px;
+            }
+            .container > header > #hotline:hover{
+                color:rgb(228, 159, 67);
+                font-weight: bolder;
+            }
+            .container > header > #hotline > #dt{
+                width: 25px;
+                position: absolute; bottom: 0px; right: 150px;
+            }
+            .container > header > #hotline > a{
+                text-decoration: none;
+                color: grey;
+            }
+            .container > header > #hotline > a:hover{
+                color:rgb(228, 159, 67);
+                font-weight: bolder;
+            }
+            section > #listsp > #data > .sp > a > .anh:hover{
+                transform: scale(1.1);
+            }
+            @keyframes logo {
+                0%   {left: 30px; transform: rotate(0deg);}
+                10%  {left: 196px; transform: rotate(36deg);}
+                20%  {left: 362px; transform: rotate(72deg);}
+                30%  {left: 528px; transform: rotate(118deg);}
+                40%  {left: 694px; transform: rotate(154deg);}
+                50%  {left: 860px; transform: rotate(180deg);}
+                60%  {left: 694px; transform: rotate(154deg);}
+                70%  {left: 528px; transform: rotate(118deg);}
+                80%  {left: 362px; transform: rotate(72deg);}
+                90%  {left: 196px; transform: rotate(36deg);}
+                100% {left: 30px; transform: rotate(0deg);}
+            }
+            @keyframes header {
+                0%   {background-color: aliceblue;}
+                20%  {background-color: aquamarine;}
+                40%  {background-color: rgb(161, 175, 54);}
+                60%  {background-color: rgb(53, 153, 153);}
+                80%  {background-color: rgb(144, 103, 103);}
+                100% {background-color: rgb(196, 183, 183);}
+            }
+            @keyframes menu_sp {
+                0%  {top: 120px;}
+                100% {top: 40px;}
+            }
+            @media only screen and (max-width: 992px){
+                .container{width: 99%;}
+                section > #listsp > #data {grid-template-columns: auto auto auto;}
+                #baiviet > #listsp > #data{grid-template-columns: auto auto auto;}
+                .container > nav > ul > .has-child::after{display: none;}
+                .container > nav > ul > li > a{ display: none;}
+                .container > nav > ul > .has-childm::after{ display: block;}
+            }
+            @media only screen and (max-width: 768px){
+                .container{width: 99%;}
+                section > #listsp > #data {grid-template-columns: auto auto;}
+                #baiviet > #listsp > #data{grid-template-columns: auto auto;}
+                .container > nav > ul > li > a{ display: none;}
+                .container > nav > ul > .has-childm::after{ display: block;}
+            }
+            @media only screen and (max-width: 600px){
+                .container{width: 99%}
+                section > #listsp > #data {grid-template-columns: auto;}
+                #baiviet > #listsp > #data{grid-template-columns: auto;}
+                .container > nav > ul > .has-childm::after{ display: block;}
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <header>
+            <img id="logo" src="/ảnh sản phẩm coffee/logo11.jpg"/>
+            <img id="logo2" src="/ảnh sản phẩm coffee/The-Coffee-House-Logo-PNG-2.png">
+            <div id="user">
+                <a href="#">Đăng nhập</a> /
+                <a href="#">Đăng ký</a>
+            </div>
+            <div id="hotline"><img id="dt" src="/ảnh sản phẩm coffee/tong-hop-25-logo-dien-thoai-dep-nhat_6.jpg"><a href="#">Đặt hàng: 0989996456</a></div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#"></a>
+                    <ul class="main-menu">
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Cửa Hàng</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                        <li><a href="#">Tuyển Dụng</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Sản phẩm</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Tất Cả</a></li>
+                        <li><a href="#">Cà Phê</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Cà Phê Highlight</a></li>
+                                <li><a href="#">Cà Phê Việt Nam</a></li>
+                                <li><a href="#">Cà Phê Máy</a></li>
+                                <li><a href="#">Cold Brew</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Trà</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Trà Trái Cây</a></li>
+                                <li><a href="#">Trà Sữa</a></li>
+                                <li><a href="#">Machiato</a></li>
+                                <li><a href="#">Trà Xanh Tây Bắc</a></li>
+                                <li><a href="#">Chocolate</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Cloud</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">CloudFee</a></li>
+                                <li><a href="#">CloudTee Mochi</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Hi-Tea</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">HiTea Trà</a></li>
+                                <li><a href="#">HiTea Đá Tuyết</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Bánh & Snack</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Bánh Mặn</a></li>
+                                <li><a href="#">Bánh Ngọt</a></li>
+                                <li><a href="#">Snack</a></li>
+                                <li><a href="#">Bánh Pastry</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Cửa hàng</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div id="banner">
+                <img id="anhbanner" src="/ảnh sản phẩm coffee/banner1.jpg" />
+            </div>
+            <section>
+                <div id="listsp">
+                    <h2>SẢN PHẨM MỚI</h2>
+                    <div id="data">
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="ảnh sản phẩm coffee/1697442235_cloudfee-hanh-nhan-nuong_8282f6c2cf4d49bba2dfbe70cb7dbede.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Cloudfee Hạnh Nhân Nướng</a>
+                            <div class="gia">Giá: 65.000</div>
+                        </div>
+
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1697450399_tx-duong-den_3342d63e65df4bd7a264ca681b9e30f1.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Trà Xanh Đường Đen</a>
+                            <div class="gia">Giá: 65.000</div>
+                        </div>
+
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1675329376_bg-cloudfee-classic_d2149a0b70e84288a082270b6ad99597.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Cloudfee Classic</a>
+                            <div class="gia">Giá: 49.000</div>
+
+                        </div>
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1697450407_tx-frosty_effb42ad21a54240b26ea1118c8d9d44.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Trà Xanh Frosty</a>
+                            <div class="gia">Giá: 55.000</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="listsp">
+                    <h2>SẢN PHẨM BÁN CHẠY</h2>
+                    <div id="data">
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1669736893_hi-tea-vai_a60e3f09ea424c40a029e5ab446e785f.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Hi Tea Vải</a>
+                            <div class="gia">Giá: 65.000</div>
+                        </div>
+
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1700837665_tra-sua-tra-xanh-tay-bac-ly-thuy-tinh_61318eefd16c4a3fa169e19021dd6958.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Trà Sữa Trà Xanh Tây Bắc</a>
+                            <div class="gia">Giá: 65.000</div>
+                        </div>
+
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1669736859_hi-tea-yuzu-tran-chau_58cc3373409e4ace96ad0ff999c28873.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Hi Tea Yuzu Trân Châu</a>
+                            <div class="gia">Giá: 69.000</div>
+
+                        </div>
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/1705920578_hi-tea-dau-tay-man-muoi-tran-chau_2b8cb0e0565c4609913f4beb12fda12d.jpg"/></a>
+                            <br><br>
+                            <a class="tensp" href="#">Hi Tea Dâu Tây Mận Trân Châu</a>
+                            <div class="gia">Giá: 69.000</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="baiviet">
+                <div id="listsp">
+                    <h2>CHUYỆN NHÀ</h2>
+                    <div id="data">
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/The-Farmer-quan-ca-phe-cho-cap-doi-(2).jpg"/></a>
+                            <br><br>
+                            <div class="noidung">
+                                <p>01/11/2023</p>
+                                <br>
+                                <a class="tensp" href="#"><h4>BẮT GẶP SÀI GÒN XƯA TRONG MÓN UỐNG...</h4></a>
+                                <br>
+                                <p>Dẫu qua bao nhiêu lớp sóng thời gian, người ta vẫn có thể tìm lại những dấu ấn thăng trầm của một Sài Gòn xưa cũ. Trên những góc phố,...</p>
+                            </div>
+                        </div>
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/istockphoto-1007194468-612x612.jpg"/></a>
+                            <br><br>
+                            <div class="noidung">
+                                <p>30/10/2023</p>
+                                <br>
+                                <a class="tensp" href="#"><h4>CHỈ CHỌN CÀ PHÊ MỖI SÁNG NHƯNG CŨNG...</h4></a>
+                                <br>
+                                <p>Thực chất, bạn không nhất thiết phải làm gì to tát để tạo nên một ngày rực rỡ. Chỉ cần bắt đầu từ những việc nhỏ nhặt nhất, khi bạn......</p>
+                            </div>
+
+                        </div>
+                        <div class="sp">
+                            <a href="#"><img class="anh" src="/ảnh sản phẩm coffee/photo-1-1700224887934949231220.jpg"/></a>
+                            <br><br>
+                            <div class="noidung">
+                                <p>21/11/2023</p>
+                                <br>
+                                <a class="tensp" href="#"><h4>LY CÀ PHÊ SỮA ĐÁ VIỆT NAM XUẤT HIỆN Ở...</h4></a>
+                                <br>
+                                <p>Ấn tượng và tự hào, hình ảnh Việt Nam tiếp tục được lên sóng tại Quảng trường Thời Đại (New York) với ly cà phê sữa đá quen thuộc, đi...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <footer>
+            Phát triển bởi Đỗ Tuấn Anh <br>
+            Email: anhdt.cenland@gmail.com <br>
+            Điện thoại: 0989.996.456
+        </footer>
+    </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+        <script>
+            var i = 1;
+            changeImage = function(){
+            var imgs = ["ảnh sản phẩm coffee/banner5.jpg","ảnh sản phẩm coffee/banner2.jpg","ảnh sản phẩm coffee/banner3.jpg"];
+                document.getElementById("anhbanner").src = imgs[i];
+                i++;
+            if(i == 3){
+                i = 0;
+              }
+            }
+            setInterval(changeImage,3000);
+
+            sessionStorage.setItem("username","Do Tuan Anh");
+            localStorage.setItem("solanxem", 10);
+            
+            $(document).ready(function(){
+                // Tìm tất cả các li có sub-menu và thêm cho nó class là "has-child"
+                $(".sub-menu").parent("li").addClass("has-child");
+            });
+
+            $(document).ready(function(){
+                $(".main-menu").parent("li").addClass("has-childm");
+            });
+    
+        </script>
+    </body>
+</html>

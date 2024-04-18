@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Form Data</title>
+            <style>
+            #h1 {
+                text-align: center;
+                color: grey;
+            }
+            #frm {
+                background-color: #46C2C2; 
+                width: 50%;
+                margin: auto;
+                border: 2px solid darkslategrey;
+                padding: 15px;
+            }
+            #frm div { 
+                 display: grid;
+                 grid-template-columns: 100px auto;
+                 margin: 20px;
+                 }
+            #frm label {
+                color: darkslategray;
+            }
+            input[type=text], [type=number], [type=email], select {
+                 width: 100%;
+                 padding: 8px;
+                 margin: 0px;
+                 border: 1px solid #ccc;
+                 border-radius: 4px;
+            }
+            input[type=submit] {
+                 width: 100%;
+                 background-color: grey;
+                 color: #46C2C2;
+                 padding: 10px 20px;
+                 margin: 8px 0px;
+                 border: none;
+                 border-radius: 4px;
+                 cursor: pointer;
+                 font-size: 16px;
+            }
+            #tb {
+                 font-family: Arial, Helvetica, sans-serif;
+                 border-collapse: collapse;
+                 width: 100%;
+            }
+            #tb tr:nth-child(even){background-color: #f2f2f2;}
+
+            #tb tr:hover {background-color: #ddd;}
+
+            #tb td, #tb th {
+                 border: 1px solid #ddd;
+                 padding: 8px;
+            }
+            #tb th {
+                 padding-top: 12px;
+                 padding-bottom: 12px;
+                 text-align: left;
+                 background-color: #46C2C2;
+                 color: white;   
+            }
+            .error {
+                color:red;
+                margin: 5px;
+                font-style: italic;
+                font-size: 0.8em;
+            }
+            .er {
+                background-color: yellow;
+                border-color: red;
+            }
+            .tr {
+                background-color: white;
+                border-color: black;
+            }
+            </style>
+        </head>
+
+        <body>
+            <h1 id="h1">Form Information</h1>
+            <form id="frm" name="tuananh" onsubmit="return check(event)">
+                <div>
+                    <label for="register_name">Name</label>
+                    <span>
+                        <input type="text" id="register_name" name="name"/>
+                        <p id="name_error" class="error"></p>
+                    </span>
+                </div>
+                <div>  
+                    <label for="register_age">Age</label>
+                    <span>
+                    <input type="number" id="register_age" name="age"/>
+                    <p id="age_error" class="error"></p>
+                    </span>   
+                </div> 
+                <div>
+                    <label for="register_gender">Gender</label>
+                    <span><input type="radio"  value="Male" id="register_male" name="gender"/>
+                          <label for="register_gendermale">Male</label>
+                          <input type="radio"  value="Female" id="register_female" name="gender"/>
+                          <label for="register_genderfemale">Female</label>
+                          <br>
+                          <p id="gender_error" class="error"></p>
+                    </span>
+                </div>
+                <div>
+                    <label for="register_email">Email</label>
+                    <span>
+                    <input type="email" id="register_email" name="email"/>
+                    <p id="email_error" class="error"> </p>
+                    </span>
+                </div>
+                <div>
+                    <label for="register_country">Country</label>
+                    <span>
+                        <select name="country" id="register_country" style="width:160px">
+                                <option value="Select_country" selected>Select Country</option>
+                                <option value="Vietnam">VietNam</option>
+                                <option value="China">China</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Russia">Russia</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Other">Other</option>
+                        </select>
+                        <br>
+                        <p id="country_error" class="error"></p>
+                    </span>
+                </div>
+                <div>
+                    <label for="register_hobby">Hobby</label>
+                    <span>
+                        <input type="checkbox" id="football" name="hobby" value="football"/>
+                        <label for="football">Football</label>
+                        <input type="checkbox" id="basketball" name="hobby" value="basketball"/>
+                        <label for="basketball">Basketball</label>
+                        <input type="checkbox" id="tennis" name="hobby" value="tennis"/>
+                        <label for="tennis">Tennis</label>
+                        <br>
+                        <p id="hobby_error" class="error"></p>
+                    </span>
+                </div>
+                     <p><input type="submit" value="Submit"/></p>   
+                
+                <table id="tb">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Hobby</th>
+                    </tr>
+                    <tr>
+                        <td id="result_name"></td>
+                        <td id="result_age"></td>
+                        <td id="result_gender"></td>
+                        <td id="result_email"></td>
+                        <td id="result_country"></td>
+                        <td id="result_hobby"></td>
+                    </tr>
+                </table>
+            </form>  
+            
+            <script src="form.js"></script>
+     </body>
+</html>
+
+                            
+                        

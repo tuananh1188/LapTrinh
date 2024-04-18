@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nhập Sản Phẩm</title>
+        <style>
+            #nhapSanPham{
+                width: 400px;
+                margin: auto;
+                background-color: antiquewhite;
+                padding: 20px;
+            }
+
+            div{
+                display: grid;
+                grid-template-columns: 150px auto;
+                margin: 10px;
+                padding: 5px;
+            }
+
+            label{
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+
+            .loi{
+                font-size: 0.8em;
+                font-style: italic;
+                color: red;
+            }
+
+            #bang{
+                text-align: center;
+                width: 500px;
+                background-color: bisque;
+                margin: auto;  
+                padding: 5px;
+                border: 1px solid black;
+                box-sizing: border-box ;
+                border-radius: 10px;
+            }
+
+            #bang tr:hover {background-color: #ddd;}
+
+            #bang >th , #bang >td {
+                font-size: 2em;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            p{
+                text-align: center;
+                padding-top: 10px;
+                padding-left: 60px;
+            }
+
+            #bt1{
+                border-radius: 10px;
+                background-color: rgb(167, 131, 74);
+                color:aliceblue;
+                padding: 5px;
+            }
+
+            #bt2{
+                border-radius: 10px;
+                background-color: rgb(167, 131, 74);
+                color:aliceblue;
+                padding: 5px 40px;
+            }
+        </style>
+    </head>
+
+    <body onload="taidulieu()">
+        <header>
+            <table id="bang">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Ngày Sản Xuất</th>
+                </tr>
+
+            </table>
+        </header>
+        <br>
+        <main>
+            <form id="nhapSanPham" action="#">
+                <div>
+                    <label for="tensanpham">Tên Sản Phẩm</label>
+                    <span><input type="text" id="tensanpham"/><br>
+                          <b id="baoloiten" class="loi"></b>
+                    </span>
+                </div>
+
+                <div>
+                    <label for="giasanpham">Giá Sản Phẩm</label>
+                    <span>
+                        <input type="number" id="giasanpham"/><br>
+                        <b id="baoloigia" class="loi"></b>
+                    </span>
+                </div>
+
+                <div>
+                    <label for="ngaysanxuat">Ngày Sản Xuất</label>
+                    <span>
+                        <input type="date" id="ngaysanxuat"/><br>
+                        <b id="baoloingay" class="loi"></b>
+                    </span>
+                </div>
+
+                <p>
+                    <button id="bt1" onclick="kiemtradulieu()">Thêm Sản Phẩm</button>
+                    <button id="bt2" onclick="huydulieu()">Huỷ</button>
+                </p>
+            </form>
+
+            <script src="form_table.js"></script>
+        </main>
+    </body>
+</html>
