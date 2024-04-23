@@ -14,6 +14,7 @@
     var ngaysx_loi = document.getElementById("ngaysx-loi");
     var mau_loi = document.getElementById("mau-loi");
     var tinhnang_loi = document.getElementById("tinhnang-loi");
+
 // Kiểm tra dữ liệu đã nhập đúng chưa
 function kiemtra(){
     if(id_sp.value == ""){
@@ -83,21 +84,21 @@ function kiemtra(){
  }
 }
 //Hàm add sản phẩm
-var bangdulieu = [];
-var demsp = 0;
-function them_sp(){
-    var maudachon="";
-    for(i=0; i<mau_sp.length; i++){
-        if(mau_sp[i].checked == true){
-            maudachon = mau_sp[i].value;
+    var bangdulieu = [];
+    var demsp = 0;
+    function them_sp(){
+        var maudachon="";
+        for(i=0; i<mau_sp.length; i++){
+            if(mau_sp[i].checked == true){
+                maudachon = mau_sp[i].value;
+            }
         }
-    }
-    var tinhnangchon="";
-    for(i=0; i<tinhnang_sp.length; i++){
-        if(tinhnang_sp[i].checked == true){
-            tinhnangchon += `<br>${tinhnang_sp[i].value}`;
+        var tinhnangchon="";
+        for(i=0; i<tinhnang_sp.length; i++){
+            if(tinhnang_sp[i].checked == true){
+                tinhnangchon += `<br>${tinhnang_sp[i].value}`;
+            }
         }
-    }
     var dulieuthem = {
         ID: id_sp.value,
         Ten: ten_sp.value,
@@ -111,13 +112,6 @@ function them_sp(){
     document.getElementById("sosp").innerText =`Số Sản Phẩm : ${demsp}`;
     bangdulieu.push(dulieuthem);
     taidulieubang();
-    huydulieu();
-
-    
-    
-
-
-
 }
 
 // Hàm hiện dữ liệu lên bảng
@@ -148,96 +142,116 @@ function them_sp(){
                                 </tr>`;
     }
       document.getElementById("table").innerHTML = table_sp;
-
+      console.log(bangdulieu);   
 }
 
 //Kiểm tra trùng dữ liệu
-function kiemtratrungdulieu(){
-    var trungdulieu = false;
-    for (var i = 0; i < bangdulieu.length; i++) {
-        if (bangdulieu[i].Ten.trim().toLowerCase() === ten_sp.value.trim().toLowerCase()) {
-            trungdulieu = true;
-            break;
+    function kiemtratrungdulieu(){
+        var trungdulieu = false;
+        for (var i = 0; i < bangdulieu.length; i++) {
+            if (bangdulieu[i].Ten.trim().toLowerCase() === ten_sp.value.trim().toLowerCase() || bangdulieu[i].ID == id_sp.value) {
+                trungdulieu = true;
+                break;
+            }
         }
+        return trungdulieu;
     }
-    return trungdulieu;
-}
 
 //huỷ dữ liệu
-function huydulieu(){
-    id_sp.value = "";
-    ten_sp.value = "";
-    soluong_sp.value = "";
-    gia_sp.value = "";
-    ngaysx_sp.value = "";  
+    function huydulieu(){
+        id_sp.value = "";
+        ten_sp.value = "";
+        soluong_sp.value = "";
+        gia_sp.value = "";
+        ngaysx_sp.value = "";  
 
-    id_loi.innerHTML = "";
-    ten_loi.innerHTML = "";
-    soluong_loi.innerHTML = "";
-    gia_loi.innerHTML = "";
-    ngaysx_loi.innerHTML = "";
-    mau_loi.innerHTML = ""
-    tinhnang_loi.innerHTML = "";
-}
+        id_loi.innerHTML = "";
+        ten_loi.innerHTML = "";
+        soluong_loi.innerHTML = "";
+        gia_loi.innerHTML = "";
+        ngaysx_loi.innerHTML = "";
+        mau_loi.innerHTML = ""
+        tinhnang_loi.innerHTML = "";
+    }
 
 //Delete dữ liệu
-function xoadulieu(index){
-    for(var i=0; i<bangdulieu.length; i++){
-        if(bangdulieu[i].ID == index){
-            bangdulieu.splice(i,1);
-            taidulieubang();
-            huydulieu();
+    function xoadulieu(index){
+        for(var i=0; i<bangdulieu.length; i++){
+            if(bangdulieu[i].ID == index){
+                bangdulieu.splice(i,1);
+                taidulieubang();
+                huydulieu();
+            }
         }
     }
-}
 
 //Edit dữ liệu
-function suadulieu(index){
-    for(var i=0; i<bangdulieu.length; i++){
-        if(bangdulieu[i].ID == index){
-            id_sp.value = bangdulieu[i].ID;
-            ten_sp.value = bangdulieu[i].Ten;
-            soluong_sp.value = bangdulieu[i].SoLuong;
-            gia_sp.value = bangdulieu[i].Gia;
-            ngaysx_sp.value = bangdulieu[i].Ngay;
-            mau_sp.value = bangdulieu[i].Mau;
-            tinhnang_sp.value = bangdulieu[i].TinhNang;
+    function suadulieu(index){
+        for(var i=0; i<bangdulieu.length; i++){
+            if(bangdulieu[i].ID == index){
+                id_sp.value = bangdulieu[i].ID;
+                ten_sp.value = bangdulieu[i].Ten;
+                soluong_sp.value = bangdulieu[i].SoLuong;
+                gia_sp.value = bangdulieu[i].Gia;
+                ngaysx_sp.value = bangdulieu[i].Ngay;
+                mau_sp.value = bangdulieu[i].Mau;
+                tinhnang_sp.value = bangdulieu[i].TinhNang;
+            }
         }
     }
-}
 
 // Update dữ liệu
-function capnhat(index_sua){
-    var maudachon="";
-    for(i=0; i<mau_sp.length; i++){
-        if(mau_sp[i].checked == true){
-            maudachon = mau_sp[i].value;
+    function capnhat(index_sua){
+        var maudachon="";
+        for(i=0; i<mau_sp.length; i++){
+            if(mau_sp[i].checked == true){
+                maudachon = mau_sp[i].value;
+            }
         }
+        
+        var tinhnangchon= "";
+        for(i=0; i<tinhnang_sp.length; i++){
+            if(tinhnang_sp[i].checked == true){
+                tinhnangchon += `<br>${tinhnang_sp[i].value}`;
+            }
+        }
+
+        var dulieuthem = {
+            ID: id_sp.value,
+            Ten: ten_sp.value,
+            SoLuong: soluong_sp.value,
+            Gia: gia_sp.value,
+            Ngay: ngaysx_sp.value,
+            Mau: maudachon,
+            TinhNang: tinhnangchon
+        };
+
+        var index_sua = bangdulieu.findIndex((item)=>item.ID == dulieuthem.ID)
+        if(index_sua >= 0){
+        bangdulieu.splice(index_sua,1,dulieuthem);
+        }else{
+        bangdulieu.push(dulieuthem);
+        }
+        taidulieubang();
     }
+
+// Sắp xếp dữ liệu 
+    function sapxep(){
+        bangdulieu.sort(function(sp1,sp2){
+            let a = sp1.Ten.toLowerCase();
+            let b = sp2.Ten.toLowerCase();
+            if(a < b){ 
+                return -1;
+            } 
+            if(a > b){ 
+                return 1;
+            }
+            return 0;
+        });
+        taidulieubang();
+    }
+
     
-    var tinhnangchon= "";
-    for(i=0; i<tinhnang_sp.length; i++){
-        if(tinhnang_sp[i].checked == true){
-            tinhnangchon += `<br>${tinhnang_sp[i].value}`;
-        }
-    }
 
-    var dulieuthem = {
-        ID: id_sp.value,
-        Ten: ten_sp.value,
-        SoLuong: soluong_sp.value,
-        Gia: gia_sp.value,
-        Ngay: ngaysx_sp.value,
-        Mau: maudachon,
-        TinhNang: tinhnangchon
-    };
 
-    var index_sua = bangdulieu.findIndex((item)=>item.ID == dulieuthem.ID)
-    if(index_sua >= 0){
-       bangdulieu.splice(index_sua,1,dulieuthem);
-    }else{
-       bangdulieu.push(dulieuthem);
-    }
-    taidulieubang();
-}
 
